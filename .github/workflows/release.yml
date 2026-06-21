@@ -24,22 +24,19 @@ jobs:
 
       - run: npm ci
 
-      # native module
       - run: npx electron-rebuild -f -w keytar
 
-      # build
       - run: npm run build
 
-      # ⭐ 关键：生成 SLSA provenance
-      - name: Generate Build Attestation
-        uses: actions/attest-build-provenance@v2
+      # ⭐ 关键：必须在 upload 之前
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@v3
         with:
-          subject-path: dist/**/*.zip
+          subject-path: dist/*.zip
 
-      # release
       - name: Upload Release Assets
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/**/*.zip
+          files: dist/*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
