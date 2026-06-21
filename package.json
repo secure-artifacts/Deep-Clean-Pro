@@ -27,7 +27,8 @@
     ],
     "directories": {
       "output": "dist"
-    }
+    },
+    "publish": null
   },
   "dependencies": {
     "keytar": "^7.9.0"
