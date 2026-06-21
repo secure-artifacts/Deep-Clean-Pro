@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: write
+  id-token: write
+  attestations: write
 
 jobs:
   release:
@@ -22,15 +24,22 @@ jobs:
 
       - run: npm ci
 
-      # ⭐ native module support（keytar）
-      - run: npx electron-rebuild
+      # native module
+      - run: npx electron-rebuild -f -w keytar
 
+      # build
       - run: npm run build
 
+      # ⭐ 关键：生成 SLSA provenance
+      - name: Generate Build Attestation
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: dist/**/*.zip
+
+      # release
       - name: Upload Release Assets
         uses: softprops/action-gh-release@v2
         with:
-          files: |
-            dist/**/*.zip
+          files: dist/**/*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
