@@ -16,7 +16,7 @@
       "category": "public.app-category.utilities",
       "target": [
         {
-          "target": "dmg",
+          "target": "zip",
           "arch": [
             "universal"
           ]
