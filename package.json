@@ -14,7 +14,12 @@
     "mac": {
       "category": "public.app-category.utilities",
       "target": [
-        "dir"
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        }
       ],
       "icon": "build/icon.icns",
       "hardenedRuntime": true,
