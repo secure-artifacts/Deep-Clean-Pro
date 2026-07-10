@@ -26,7 +26,8 @@
       <div class="loader-brand">
         <div class="loader-brand-icon">
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-            <circle cx="18" cy="18" r="16" stroke="url(#lg)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="6 4" />
+            <circle cx="18" cy="18" r="16" stroke="url(#lg)" stroke-width="2.5" stroke-linecap="round"
+              stroke-dasharray="6 4" />
             <circle cx="18" cy="18" r="7" fill="url(#lg2)" opacity="0.9" />
             <defs>
               <linearGradient id="lg" x1="2" y1="2" x2="34" y2="34" gradientUnits="userSpaceOnUse">
@@ -68,6 +69,10 @@
         <span class="menu-label">仪表板</span>
         <span class="size-val" id="side-total">0 KB</span>
       </div>
+      <div class="menu-item" id="menu-optimize" onclick="switchView('optimize')">
+        <span class="menu-icon">❖</span>
+        <span class="menu-label">优化系统</span>
+      </div>
       <div class="menu-item" id="menu-whitelist" onclick="switchView('whitelist')">
         <span class="menu-icon">✦</span>
         <span class="menu-label">白名单</span>
@@ -84,8 +89,13 @@
           </div>
         </div>
         <div class="topbar-actions">
-          <button class="btn-scan" onclick="handleScan()">深度扫描</button>
-          <button class="btn-clean" id="master-clean" style="display:none" onclick="handleClean()">清理垃圾</button>
+          <div id="scan-action">
+            <button class="btn-scan" id="scan-btn" onclick="handleScan()">深度扫描</button>
+            <button class="btn-clean" id="master-clean" style="display:none" onclick="handleClean()">清理垃圾</button>
+          </div>
+          <div id="optimize-action" style="display: none;">
+            <button class="btn-scan" id="optimize-btn" onclick="runOptimize()" data-view="optimize">开始优化</button>
+          </div>
         </div>
       </header>
       <div class="view-body" id="view-body">

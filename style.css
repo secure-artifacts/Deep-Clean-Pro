@@ -438,8 +438,8 @@ input:disabled {
 
 .category-list-item input[type='checkbox'],
 .file-item input[type='checkbox'] {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   accent-color: var(--blue);
   flex-shrink: 0;
   cursor: pointer;
