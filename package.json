@@ -10,12 +10,13 @@
   },
   "build": {
     "appId": "com.Raz1ner.Deep-Clean-Pro",
-    "productName": "Deep Clean Pro",
+    "productName": "Deep-Clean-Pro",
+    "artifactName": "${productName}-${version}-${os}.${ext}",
     "mac": {
       "category": "public.app-category.utilities",
       "target": [
         {
-          "target": "dmg",
+          "target": "zip",
           "arch": [
             "universal"
           ]
@@ -30,7 +31,8 @@
     ],
     "directories": {
       "output": "dist"
-    }
+    },
+    "publish": null
   },
   "dependencies": {
     "keytar": "^7.9.0"
